@@ -45,9 +45,7 @@ export class TaskService {
     id: number,
     updateTaskDto: UpdateTaskDto,
   ): Promise<Task | null> {
-    console.log('starting update...');
     await this.taskRepository.update(id, updateTaskDto);
-    console.log('task updated successfully!');
     return this.getTask(id);
   }
   async updateTaskTag(taskId: number, tagId: number): Promise<Tag[] | null> {
@@ -61,12 +59,10 @@ export class TaskService {
       if (foundTag) {
         task.tags = task.tags.filter((t) => t.id !== tagId);
         await this.taskRepository.save(task);
-        console.log('Tag removed from task successfully');
         return task.tags;
       } else {
         task.tags.push(tag);
         await this.taskRepository.save(task);
-        console.log('Tag added to task successfully');
         return task.tags;
       }
     }
@@ -104,7 +100,6 @@ export class TaskService {
 
     await this.taskRepository.save(task);
 
-    console.log('Tags updated for task successfully');
     return task.tags;
   }
   async updateTaskBoard(taskId: number, id: number): Promise<Board | null> {
@@ -181,7 +176,6 @@ export class TaskService {
       tags: task.tags.map((tag) => tag.id),
     }));
 
-    console.log(JSON.stringify(serializedTasks, null, 2)); // Verify data structure
     return serializedTasks;
   }
   async getParentsTasks(taskIds: number[]): Promise<Task[]> {

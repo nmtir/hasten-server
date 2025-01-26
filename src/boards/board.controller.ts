@@ -43,10 +43,8 @@ export class BoardController {
       // Handle empty ids, either return an empty array or a default response
       return this.boardService.getCategoriesBoards([]);
     }
-    console.log('ids', ids);
     // Split the string of ids into an array of numbers
     const idArray = ids.split(',').map(Number);
-    console.log('idArray', idArray);
 
     return this.boardService.getCategoriesBoards(idArray);
   }

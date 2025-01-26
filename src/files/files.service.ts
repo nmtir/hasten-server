@@ -76,8 +76,6 @@ export class FilesService {
       .catch((error) => {
         console.log(error);
       });
-    console.log(uploadResult);
-    console.log(id);
     if (uploadResult) return uploadResult.url;
     return null;
   }

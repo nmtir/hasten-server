@@ -99,7 +99,6 @@ export class AuthService {
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,
     });
-    console.log('//////////socialToken/////////:', token);
 
     return { token, user };
   }
@@ -178,7 +177,6 @@ export class AuthService {
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,
     });
-    console.log('//////////socialToken/////////:', jwtToken);
     return {
       token: jwtToken,
       user,
@@ -456,7 +454,6 @@ export class AuthService {
       if (publicId) {
         try {
           await cloudinary.uploader.destroy(publicId);
-          console.log(`Deleted existing image: ${publicId}`);
         } catch (error) {
           console.error('Failed to delete existing image:', error);
         }
@@ -498,8 +495,6 @@ export class AuthService {
       );
       uploadStream.end(file.buffer); // Pass file buffer to Cloudinary
     });
-    console.log('Uploaded Image URL:', imageUrl);
-    console.log(id);
 
     await this.usersService.update(id, { image: imageUrl });
     return this.sendToken(id);

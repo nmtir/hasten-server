@@ -33,11 +33,6 @@ export class AuthFacebookService {
       );
     });
 
-    console.log('/////////////////////////////////////');
-    console.log(data.first_name);
-    console.log(data.last_name);
-    console.log(data);
-    console.log('/////////////////////////////////////');
     return {
       id: data.id,
       email: data.email,

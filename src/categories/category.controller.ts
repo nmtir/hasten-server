@@ -39,8 +39,6 @@ export class CategoryController {
     @Body() createCategoryDto: CreateCategoryDto,
     @Param('id') id: number,
   ) {
-    console.log('dto :');
-    console.log(createCategoryDto);
     return this.categoryService.createCategory(createCategoryDto, id);
   }
 
@@ -49,9 +47,6 @@ export class CategoryController {
     @Param('id') id: number,
     @Body() updateCategoryDto: UpdateCategoryDto,
   ) {
-    console.log('dto :', updateCategoryDto.title);
-    console.log('dto :', updateCategoryDto.color);
-    console.log('id :', id);
     return this.categoryService.updateCategory(id, updateCategoryDto);
   }
 
