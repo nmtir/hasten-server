@@ -12,14 +12,12 @@ export class MailConfigService implements MailerOptionsFactory {
   createMailerOptions(): MailerOptions {
     return {
       transport: {
-        host: this.configService.get('mail.host', { infer: true }),
-        port: this.configService.get('mail.port', { infer: true }),
-        ignoreTLS: this.configService.get('mail.ignoreTLS', { infer: true }),
-        secure: this.configService.get('mail.secure', { infer: true }),
-        requireTLS: this.configService.get('mail.requireTLS', { infer: true }),
+        host: 'smtp-relay.sendinblue.com', // Brevo's SMTP host
+        port: 587, // Port for TLS
+        secure: false, // Use STARTTLS (not SSL)
         auth: {
-          user: this.configService.get('mail.user', { infer: true }),
-          pass: this.configService.get('mail.password', { infer: true }),
+          user: this.configService.get('mail.user', { infer: true }), // Brevo SMTP user (your email)
+          pass: this.configService.get('mail.password', { infer: true }), // Brevo SMTP password (API key)
         },
       },
       defaults: {
